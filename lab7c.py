@@ -18,7 +18,7 @@ def sum_times(t1, t2):
     """Add two time objests and return the sum."""
     seconds = time_to_sec(t1) + time_to_sec(t2) # Adding time_to_sec time objects to get total seconds
     new_time = sec_to_time(seconds) # Creating properly formatted time object from seconds
-    return time
+    return new_time
 
 def change_time(time, seconds):
     '''Modify time attribute by adding seconds'''
