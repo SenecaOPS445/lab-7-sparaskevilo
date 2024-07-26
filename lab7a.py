@@ -32,7 +32,7 @@ def sum_times(t1, t2):
         while remainder > 0: 
             remainder = remainder - 1 # Remainder to keep track how many times we need to subtract by 60 and add to minute
             sum.minute -= 60 # Stores the result of subtracting 60 in sum.second
-            sum.hour += 1 # Add to the hour based on how many times the minutes excedded 69
+            sum.hour += 1 # Add to the hour based on how many times the minutes excedded 60
         
     return sum
 
