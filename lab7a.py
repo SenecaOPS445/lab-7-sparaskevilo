@@ -20,6 +20,20 @@ def sum_times(t1, t2):
     sum.hour = t1.hour + t2.hour
     sum.minute = t1.minute + t2.minute
     sum.second = t1.second + t2.second
+
+    #If seconds/minutes is 60 or more subtract 60 and add 1 to the minute/hour
+    if sum.second >= 60:
+        remainder = sum.second // 60 
+        while remainder > 0: 
+            sum.second -= 60 
+            sum.minute += 1
+    if sum.minute >= 60:
+        remainder = sum.minute // 60  # Floor division to reutrn a rounded number less than or equal to the result.
+        while remainder > 0: 
+            remainder = remainder - 1 # Remainder to keep track how many times we need to subtract by 60 and add to minute
+            sum.minute -= 60 # Stores the result of subtracting 60 in sum.second
+            sum.hour += 1 # Add to the hour based on how many times the minutes excedded 69
+        
     return sum
 
 def valid_time(t):
