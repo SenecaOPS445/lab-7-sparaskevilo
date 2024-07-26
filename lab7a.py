@@ -23,16 +23,17 @@ def sum_times(t1, t2):
 
     #If seconds/minutes is 60 or more subtract 60 and add 1 to the minute/hour
     if sum.second >= 60:
-        remainder = sum.second // 60 
-        while remainder > 0: 
+        quotient = sum.second // 60 
+        while quotient > 0:
+            quotient = quotient - 1 
             sum.second -= 60 
             sum.minute += 1
     if sum.minute >= 60:
-        remainder = sum.minute // 60  # Floor division to reutrn a rounded number less than or equal to the result.
-        while remainder > 0: 
-            remainder = remainder - 1 # Remainder to keep track how many times we need to subtract by 60 and add to minute
+        quotient = sum.minute // 60  # Floor division to reutrn a rounded number less than or equal to the result.
+        while quotient > 0: #  Keep track how many times we need to subtract by 60 and add to minute/hour
+            quotient = quotient - 1 
             sum.minute -= 60 # Stores the result of subtracting 60 in sum.second
-            sum.hour += 1 # Add to the hour based on how many times the minutes excedded 60
+            sum.hour += 1 # Add to sum.hour by one
         
     return sum
 
