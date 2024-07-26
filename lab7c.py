@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Student ID: [seneca_id]
+# Student ID: sparaskevilo
 class Time:
     """Simple object type for time of the day.
     data attributes: hour, minute, second
@@ -16,43 +16,14 @@ def format_time(t):
 
 def sum_times(t1, t2):
     """Add two time objests and return the sum."""
-    sum = Time(0,0,0)
-    sum.hour = t1.hour + t2.hour
-    sum.minute = t1.minute + t2.minute
-    sum.second = t1.second + t2.second
-
-    #If seconds/minutes is 60 or more subtract 60 and add 1 to the minute/hour
-    if sum.second >= 60:
-        quotient = sum.second // 60 
-        while quotient > 0:
-            quotient = quotient - 1 
-            sum.second -= 60 
-            sum.minute += 1
-    if sum.minute >= 60:
-        quotient = sum.minute // 60  # Floor division to reutrn a rounded number less than or equal to the result.
-        while quotient > 0: #  Keep track how many times we need to subtract by 60 and add to minute/hour
-            quotient = quotient - 1 
-            sum.minute -= 60 # Stores the result of subtracting 60 in sum.minute
-            sum.hour += 1 # Add to sum.hour by one
-        
-    return sum
+    seconds = time_to_sec(t1) + time_to_sec(t2) # Adding time_to_sec time objects to get total seconds
+    new_time = sec_to_time(seconds) # Creating properly formatted time object from seconds
+    return time
 
 def change_time(time, seconds):
     '''Modify time attribute by adding seconds'''
-    time.second += seconds
-    if valid_time(time) != True:
-        while time.second >= 60:
-            time.second -= 60
-            time.minute += 1
-        while time.second < 0:
-            time.minute -= 1
-            time.second += 60
-        while time.minute >= 60:
-            time.minute -= 60
-            time.hour += 1
-        while time.minute < 0:
-            time.hour -= 1
-            time.minute += 60
+    new_sec = time_to_sec(time) + seconds # Adding amount of seconds time needs to be changed by
+    new_time = sec_to_time(new_sec) # Creating properly formatted time object from seconds
     return None
 
 def time_to_sec(time):
